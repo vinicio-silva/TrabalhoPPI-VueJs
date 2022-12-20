@@ -1,19 +1,26 @@
-# default
+# Agendify
 
-## Project setup
+Projeto de um sistema de agendamento de serviços como barbearia, massagem, estética...
+
+**Rascunhos do projeto**
+
+[Figma](https://www.figma.com/file/638BU4ScdbzNhDjlHOP00u/PPI---Projeto-Agendamento?node-id=0%3A1&t=ctbSuLlVzRljt6Hk-1) do projeto.
+
+**Stack utilizada**
+- JS Framework: [VueJS](https://vuejs.org)
+- UI Framework: [Vuetify](https://next.vuetifyjs.com/en/)
+
+## Configurando o projeto
 
 ```
 # yarn
-yarn
+yarn install
 
 # npm
-npm install
-
-# pnpm
-pnpm install
+npm install --global yarn
 ```
 
-### Compiles and hot-reloads for development
+### Executar o código
 
 ```
 # yarn
@@ -21,12 +28,9 @@ yarn dev
 
 # npm
 npm run dev
-
-# pnpm
-pnpm dev
 ```
 
-### Compiles and minifies for production
+### Compilar e otimizar 
 
 ```
 # yarn
@@ -34,11 +38,4 @@ yarn build
 
 # npm
 npm run build
-
-# pnpm
-pnpm build
 ```
-
-### Customize configuration
-
-See [Configuration Reference](https://vitejs.dev/config/).
