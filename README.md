@@ -36,6 +36,6 @@ npm run dev
 # yarn
 yarn build
 
-# npm
+# npm 
 npm run build
 ```
