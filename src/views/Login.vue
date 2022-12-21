@@ -2,7 +2,7 @@
 	<div class="h-100">
 		<v-row class="h-100 ma-0">
 			<v-col class="login-bg-left" cols="6">
-
+				<img src="src/assets/login/login.png" alt="">
 			</v-col>
 			<v-col class="login-bg-right" cols="6">
 				<v-card class="elevation-12">
