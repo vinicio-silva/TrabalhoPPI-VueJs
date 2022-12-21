@@ -1,39 +1,74 @@
 <template>
-	<div class="h-100 d-flex">
-		<Sidebar />
-		<div class="w-100">
-			<div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
+  <div class="h-100 d-flex">
+    <Sidebar />
+    <div class="w-100">
+      <div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
           <h2>Equipe</h2>
-          <div>Veja todas as informações sobre sua equipe</div>
+          <v-breadcrumbs class="px-0" :items="items">
+            <template v-slot:divider>
+              <v-icon>mdi-chevron-right</v-icon>
+            </template>
+          </v-breadcrumbs>
         </div>
-				<v-toolbar color="white" class="pa-2">
-					<v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
-					<v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile"></v-btn>
-				</v-toolbar>
-			</div>
-		</div>
-	</div>
+        <v-toolbar color="white" class="pa-2">
+          <v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
+          <v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile"></v-btn>
+        </v-toolbar>
+      </div>
+      <div class="pa-12">
+        <h1>Editar membro</h1>
+        <FormUser/>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import Sidebar from '@/components/Sidebar';
+import FormUser from '@/components/FormUser';
 export default {
-	components: {
-		Sidebar
-	},
-	data() {
-		return {
-		}
-	}
+  props: ['id'],
+  components: {
+    Sidebar,
+    FormUser
+  },
+  data() {
+    return {
+      users: {
+        '1' : { "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba"] },
+        '2' : { "nome": "Felipe Cintra", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba", "Sombrancelha"] },
+      },
+      items: [
+        {
+          text: 'Geral',
+          disabled: false,
+          href: '/dashboard',
+        },
+        {
+          text: 'Equipe',
+          disabled: false,
+          href: '/equipe',
+        },
+        {
+          text: 'Editar membro',
+          disabled: true,
+          href: 'breadcrumbs_link_1',
+        },
+      ],
+    }
+  },
+  created() {
+      console.log(this.users[this.id]);
+  }
 }
 </script>
 <style scoped>
 .h-100 {
-	height: 100%;
+  height: 100%;
 }
 
 .w-100 {
-	width: 100%;
+  width: 100%;
 }
 
 tr.border_bottom td {

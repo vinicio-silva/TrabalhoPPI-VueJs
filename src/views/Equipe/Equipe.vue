@@ -39,15 +39,15 @@
                 Cargo
               </th>
               <th class="text-left f-20">
-                Atividades
+                Serviços
               </th>
               <th>
               </th>
             </tr>
           </thead>
-          <tbody v-for="item in users" :key="item.id">
+          <tbody v-for="item, index in users">
             <tr class="border_bottom">
-              <td>{{ item.id }}</td>
+              <td>{{ index }}</td>
               <td>{{ item.nome }}</td>
               <td>{{ item.cargo }}</td>
               <td>
@@ -58,7 +58,7 @@
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'user-edit', params: {id: item.id}}">
+                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'user-edit', params: {id: index}}">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>
@@ -85,10 +85,10 @@ export default {
   },
   data() {
     return {
-      users: [
-        { "id": 1, "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba"] },
-        { "id": 2, "nome": "Felipe Cintra", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba", "Sombrancelha"] },
-      ]
+      users: {
+        '1' : { "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba"] },
+        '2' : { "nome": "Felipe Cintra", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba", "Sombrancelha"] },
+      },
     }
   }
 }

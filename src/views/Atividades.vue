@@ -54,10 +54,10 @@ export default {
 	},
 	data() {
 		return {
-			users: [
-				{"id": 1, "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba"] },
-				{"id": 2, "nome": "Felipe Cintra", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba", "Sombrancelha"] },
-			]
+			users: {
+        '1' : { "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba"] },
+        '2' : { "nome": "Felipe Cintra", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba", "Sombrancelha"] },
+      },
 		}
 	}
 }

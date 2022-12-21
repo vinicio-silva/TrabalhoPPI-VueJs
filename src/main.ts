@@ -11,6 +11,9 @@ import App from './App.vue'
 import { createApp } from 'vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
+import Datepicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+
 
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
@@ -29,7 +32,7 @@ const routes = [
   { path: '/dashboard', component: Dashboard },
   { path: '/equipe', component: Equipe },
   { path: '/equipe/create', component: CreateUser },
-  { path: '/equipe/:id/edit', component: EditUser, name: 'user-edit' },
+  { path: '/equipe/:id/edit', component: EditUser, name: 'user-edit', props: true },
   { path: '/agenda', component: Agenda },
   { path: '/atividades', component: Atividades },
   { path: '/configuracao', component: Configuracao },
@@ -47,7 +50,10 @@ import { registerPlugins } from '@/plugins'
 
 const app = createApp(App)
 
+
 .use(router)
+
+app.component('Datepicker', Datepicker);
 
 registerPlugins(app)
 
