@@ -2,7 +2,7 @@
 	<v-toolbar outlined elevation="2" color="white" class="pa-2">
     <v-row class="justify-between">
       <v-col>
-        <v-btn variant="plain" class="pt-4 text-h4 font-weight-bold brand-color" to="/">
+        <v-btn variant="plain" class="pt-4 text-h4 font-weight-bold brand-color title" to="/">
         Agendify
       </v-btn>
       </v-col>

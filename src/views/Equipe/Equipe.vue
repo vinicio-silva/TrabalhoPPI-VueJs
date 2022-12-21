@@ -4,8 +4,8 @@
     <div class="w-100">
       <div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
-          <h2>Equipe</h2>
-          <div>Veja todas as informações sobre sua equipe</div>
+          <h2 class="title">Equipe</h2>
+          <div class="subtitle">Veja todas as informações sobre sua equipe</div>
         </div>
         <v-toolbar color="white" class="pa-2">
           <v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>

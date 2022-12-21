@@ -4,8 +4,8 @@
 		<div class="w-100">
 			<div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
-          <h2>Equipe</h2>
-          <div>Veja todas as informações sobre sua equipe</div>
+          <h2 class="title">Agendamentos</h2>
+          <div class="subtitle">Veja os agendamentos a seguir da sua equipe.</div>
         </div>
 				<v-toolbar color="white" class="pa-2">
 					<v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
@@ -29,7 +29,7 @@
 							</th>
 						</tr>
 					</thead>
-					<tbody v-for="item in users" :key="item.id">
+					<tbody v-for="item in agenda" :key="item.id">
 						<tr class="border_bottom">
 							<td>{{ item.nome }}</td>
 							<td>{{ item.cargo }}</td>
@@ -54,7 +54,7 @@ export default {
 	},
 	data() {
 		return {
-			users: {
+			agenda: {
         '1' : { "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba"] },
         '2' : { "nome": "Felipe Cintra", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba", "Sombrancelha"] },
       },
