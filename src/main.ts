@@ -22,7 +22,7 @@ import Equipe from '@/views/Equipe/Equipe.vue'
 import CreateUser from '@/views/Equipe/CreateUser.vue'
 import EditUser from '@/views/Equipe/EditUser.vue'
 import Agenda from '@/views/Agenda/Agenda.vue'
-import Atividades from '@/views/Atividades.vue'
+import Atividades from '@/views/Produtos/Produtos.vue'
 import Configuracao from '@/views/Configuracao.vue'
 import Suporte from '@/views/Suporte.vue'
 
@@ -34,7 +34,7 @@ const routes = [
   { path: '/equipe/create', component: CreateUser },
   { path: '/equipe/:id/edit', component: EditUser, name: 'user-edit', props: true },
   { path: '/agenda', component: Agenda },
-  { path: '/atividades', component: Atividades },
+  { path: '/produtos', component: Atividades },
   { path: '/configuracao', component: Configuracao },
   { path: '/suporte', component: Suporte },
   { path: '/equipe', component: Equipe },
