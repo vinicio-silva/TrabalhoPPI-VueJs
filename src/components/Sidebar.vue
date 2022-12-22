@@ -1,25 +1,23 @@
 <template>
-  <v-card class="h-100">
+  <v-card class="h-100 mx-auto" width="20%">
       <v-layout class="h-100">
-        <v-navigation-drawer class="pa-4">
+        <v-navigation-drawer class="pa-4" permanent color="#F2F2F2">
           <v-list>
-            <v-btn variant="plain" class="text-h4 font-weight-bold brand-color" to="/">Agendify</v-btn>
+            <v-btn class="text-h4 font-weight-bold logo-title" to="/">Agendify</v-btn>
           </v-list>
 
-          <v-divider class="my-4"></v-divider>
-
           <v-list density="compact" nav>
-            <v-list-item prepend-icon="mdi-list-box-outline" title="Geral" value="geral" to="/dashboard"></v-list-item>
-            <v-list-item prepend-icon="mdi-pencil-ruler" title="Produtos & Serviços" value="produtos" to="/atividades"></v-list-item>
-            <v-list-item prepend-icon="mdi-calendar-month-outline" title="Agendamentos" value="agendamentos" to="/agenda"></v-list-item>
-            <v-list-item prepend-icon="mdi-account-group" title="Equipe" value="equipe" to="/equipe"></v-list-item>
+            <v-list-item prepend-icon="mdi-list-box-outline" title="Geral" value="geral" to="/dashboard" class="body"></v-list-item>
+            <v-list-item prepend-icon="mdi-pencil-ruler" title="Produtos & Serviços" value="produtos" to="/atividades" class="body"></v-list-item>
+            <v-list-item prepend-icon="mdi-calendar-month-outline" title="Agendamentos" value="agendamentos" to="/agenda" class="body"></v-list-item>
+            <v-list-item prepend-icon="mdi-account-group" title="Equipe" value="equipe" to="/equipe" class="body"></v-list-item>
           </v-list>
 
           <v-divider class="my-3"></v-divider>
 
           <v-list density="compact" nav>
-            <v-list-item prepend-icon="mdi-cog-outline" title="Configurações" value="config" to="/configuracao"></v-list-item>
-            <v-list-item prepend-icon="mdi-help-circle-outline" title="Suporte" value="suporte" to="/suporte"></v-list-item>
+            <v-list-item prepend-icon="mdi-cog-outline" title="Configurações" value="config" to="/configuracao" class="body"></v-list-item>
+            <v-list-item prepend-icon="mdi-help-circle-outline" title="Suporte" value="suporte" to="/suporte" class="body"></v-list-item>
           </v-list>
 
         </v-navigation-drawer>
@@ -34,7 +32,8 @@
 </script>
 
 <style scoped>
-.brand-color {
+.logo-title {
   color: #1C10DA;
+  background: none;
 }
 </style>
