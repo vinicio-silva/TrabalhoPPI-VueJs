@@ -23,7 +23,7 @@
         </v-col>
         <v-col cols="12" md="2">
           <label for="email">Data de Nascimento</label>
-          <Datepicker input-class-name="dp-custom-input" locale="pt" auto-apply :enable-time-picker="false" v-model="form.data_nascimento" :flow="flow"></Datepicker>
+          <Datepicker class="pt-3" locale="pt" auto-apply :enable-time-picker="false" v-model="form.data_nascimento" :flow="flow"></Datepicker>
         </v-col>
       </v-row>
       <v-row>
@@ -51,6 +51,7 @@ import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 
 export default {
+  props: ['user'],
   data: () => ({
     components: {
       Datepicker
@@ -88,11 +89,18 @@ export default {
     cargos: ['Cabelereiro', 'Gerente', 'Recepcionista'],
     atividades: ['Cabelo', 'Barba', 'Sombrancelha', 'Limpeza Facial']
   }),
+  created () {
+    if (this.user) {
+      this.form = this.user;
+    }
+  },
   methods: {
     async validate () {
         const { valid } = await this.$refs.form.validate()
 
-        if (valid) alert('Form is valid')
+        if (valid) {
+          alert("Formulário válido")
+        }
       },
   },
 }

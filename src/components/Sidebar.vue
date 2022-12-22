@@ -1,9 +1,9 @@
 <template>
   <v-card class="h-100 mx-auto" width="20%">
-      <v-layout class="h-100">
-        <v-navigation-drawer class="pa-4" permanent color="#F2F2F2">
+      <v-layout class="h-100 w-100">
+        <v-navigation-drawer class="pa-4 w-100" permanent color="#F2F2F2">
           <v-list>
-            <v-btn class="text-h4 font-weight-bold logo-title" to="/">Agendify</v-btn>
+            <v-btn variant="plain" class="text-h4 font-weight-bold logo-title" to="/">Agendify</v-btn>
           </v-list>
 
           <v-list density="compact" nav>

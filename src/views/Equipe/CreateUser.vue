@@ -18,7 +18,7 @@
       </div>
       <div class="pa-12">
         <h1>Adicionar membro</h1>
-        <FormUser/>
+        <FormUser @update-users="updateUsers"/>
       </div>
     </div>
   </div>
@@ -50,6 +50,11 @@ export default {
           href: 'breadcrumbs_link_1',
         },
       ],
+    }
+  },
+  methods: {
+    updateUsers (user) {
+      console.log(user, this.users);
     }
   },
 }

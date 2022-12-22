@@ -2,15 +2,15 @@
 	<v-toolbar outlined elevation="2" color="white" class="pa-2 toolbar">
     <v-row class="justify-between">
       <v-col>
-        <v-btn variant="plain" class="pt-4 text-h4 font-weight-bold brand-color title" to="/">
+        <v-btn variant="plain" height="70px" class=" text-h4 font-weight-bold brand-color title" to="/">
         Agendify
       </v-btn>
       </v-col>
       <v-col class="d-flex justify-end">
-        <v-btn stacked to="/login">
+        <v-btn stacked variant="outlined" class="align-self-center" height="45px" to="/login">
           Login
         </v-btn>
-        <v-btn stacked variant="flat" class="px-4 mx-3 button-color">
+        <v-btn stacked variant="flat" height="45px" class="px-4 mx-3 button-color align-self-center">
           Cadastrar
         </v-btn>
       </v-col>
@@ -21,7 +21,7 @@
     <h1 class="title-home"><strong>Lorem ipsum dolor sit amet, consectetur.</strong></h1>
     <h2 class="sub-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h2>
 
-    <button class="fazer-reserva">Fazer reserva!</button> 
+    <button class="fazer-reserva">Fazer reserva!</button>
     <button class="encontrar-servico">Encontrar Serviços</button>
   </div>
 
@@ -30,13 +30,13 @@
       <img src="src/assets/home/arrow.png" class="arrow-profissional">
       <img src="src/assets/home/escolha-profissional.png " alt="profissional choose" class="img-prof-choose">
   </div>
-  
+
   <div>
     <h2 class="reserve-text">Reserve um horário</h2>
     <img src="src/assets/home/arrow2.png" alt="arrow" class="arrow-reserve">
     <img src="src/assets/home/reserva-horario.png" alt="profissional choose" class="img-reserva-horario">
   </div>
-  
+
 </template>
 
 <script>
