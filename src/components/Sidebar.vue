@@ -1,9 +1,9 @@
 <template>
-  <v-card class="h-100 mx-auto" width="380">
+  <v-card class="h-100 mx-auto" width="20%">
       <v-layout class="h-100">
         <v-navigation-drawer class="pa-4" permanent color="#F2F2F2">
           <v-list>
-            <v-btn variant="plain" class="text-h4 font-weight-bold logo-title" to="/">Agendify</v-btn>
+            <v-btn class="text-h4 font-weight-bold logo-title" to="/">Agendify</v-btn>
           </v-list>
 
           <v-list density="compact" nav>
@@ -32,7 +32,8 @@
 </script>
 
 <style scoped>
-.brand-color {
+.logo-title {
   color: #1C10DA;
+  background: none;
 }
 </style>
