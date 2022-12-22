@@ -8,7 +8,7 @@
 
           <v-list density="compact" nav>
             <v-list-item prepend-icon="mdi-list-box-outline" title="Geral" value="geral" to="/dashboard" class="body"></v-list-item>
-            <v-list-item prepend-icon="mdi-pencil-ruler" title="Produtos & Serviços" value="produtos" to="/atividades" class="body"></v-list-item>
+            <v-list-item prepend-icon="mdi-pencil-ruler" title="Produtos & Serviços" value="produtos" to="/produtos" class="body"></v-list-item>
             <v-list-item prepend-icon="mdi-calendar-month-outline" title="Agendamentos" value="agendamentos" to="/agenda" class="body"></v-list-item>
             <v-list-item prepend-icon="mdi-account-group" title="Equipe" value="equipe" to="/equipe" class="body"></v-list-item>
           </v-list>
