@@ -24,8 +24,8 @@
 				</v-form>
 				<h2 class=""><span>ou</span></h2>
 
-				<a class="google" href="http://google.com"><img src="src/assets/login/🦆 icon _google_.svg"></a>
-				<a class="face" href="http://www.facebook.com"><img src="src/assets/login/🦆 icon _facebook_.svg"></a>
+				<a class="google" href="http://google.com"><img src="src/assets/login/icon _google_.svg"></a>
+				<a class="face" href="http://www.facebook.com"><img src="src/assets/login/icon _facebook_.svg"></a>
 				<a class="apple" href="http://www.facebook.com"><img src="src/assets/login/ic_baseline-apple.svg"></a>
 
 				<p class="ainda" >Ainda não tem conta?
