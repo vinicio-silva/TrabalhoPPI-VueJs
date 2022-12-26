@@ -2,7 +2,7 @@
 	<div class="h-100">
 		<v-row class="h-100 ma-0">
 			<!-- parte da esquerda -->
-			<v-col class="login-bg-left" cols="6"> 
+			<v-col class="login-bg-left" cols="6">
 				<img src="src/assets/login/login.png" alt="">
 				<h1 class="title-login"><strong>Todos os seus agendamentos em um só lugar</strong></h1>
 				<h2 class="sub-title">Se inscreva e comece agora a fazer suas reservas!</h2>
@@ -17,38 +17,21 @@
 					<v-text-field class="box" prepend-icon="person" name="login" type="text"></v-text-field>
 					<v-label class="lab">Senha</v-label>
 					<v-text-field class="box" id="password" prepend-icon="lock" name="password" type="password"></v-text-field>
-					<input class="cb" type="checkbox" id="keepConnected" v-model="checked">
+					<input class="cb" type="checkbox" id="keepConnected">
 					<label style="margin-left: 1%;" for="keepConnected"> Mater Conectado</label>
 					<a class="esqueciSenha" href="https://ufu.br/">Esqueci a senha!</a><br>
 					<button class="Entrar">Entrar</button>
 				</v-form>
-				<h2><span>ou</span></h2>
+				<h2 class=""><span>ou</span></h2>
 
 				<a class="google" href="http://google.com"><img src="src/assets/login/🦆 icon _google_.svg"></a>
 				<a class="face" href="http://www.facebook.com"><img src="src/assets/login/🦆 icon _facebook_.svg"></a>
 				<a class="apple" href="http://www.facebook.com"><img src="src/assets/login/ic_baseline-apple.svg"></a>
-				
-				<p class="ainda" >Ainda não tem conta? 
+
+				<p class="ainda" >Ainda não tem conta?
 					<a style="color: #3F72AF" href="https://ufu.br/">Crie uma conta</a>
 				</p>
-				<!-- <v-card class="elevation-12">
-					<v-card-text>
-						<v-form>
-							<p>Email</p>
-							<v-text-field prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
-							<v-text-field id="password" prepend-icon="lock" name="password" label="Password"
-								type="password"></v-text-field>
-						</v-form>
-					</v-card-text>
-					<v-card-actions>
-						<v-spacer></v-spacer>
-						<v-btn class="login-bg-left" variant="flat" to="/dashboard">
-							Login
-						</v-btn>
-					</v-card-actions>
-				</v-card> -->
 			</v-col>
-			
 		</v-row>
 	</div>
 </template>
@@ -121,19 +104,19 @@ export default {
 }
 
 h2 {
-   width: 75%; 
+   width: 75%;
    text-align: center;
    margin-top: 5%;
-   border-bottom: 1px solid #acabab; 
+   border-bottom: 1px solid #acabab;
    line-height: 0.1em;
    margin-left: 15%;
-} 
+}
 
-h2 span { 
+h2 span {
     background:#F2F2F2;
 	color: #acabab;
 	font-size: medium;
-    padding:0 6px; 
+    padding:0 6px;
 }
 
 .google{

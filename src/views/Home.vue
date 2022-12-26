@@ -21,7 +21,7 @@
     <h1 class="title-home"><strong>Lorem ipsum dolor sit amet, consectetur.</strong></h1>
     <h2 class="sub-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h2>
 
-    <button class="fazer-reserva">Fazer reserva!</button>
+    <button class="fazer-reserva text-white">Fazer reserva!</button>
     <button class="encontrar-servico">Encontrar Serviços</button>
   </div>
 
@@ -51,7 +51,7 @@ export default {
   z-index:1;
 }
 .button-color {
-	background: #6C63FF;
+	background: #1C10DA;
 	color: #FFFFFF;
 }
 

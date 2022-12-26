@@ -105,8 +105,4 @@ export default {
 tr.border_bottom td {
   border-bottom: 1px solid #E0E0E0;
 }
-
-.f-20 {
-  font-size: 20px !important;
-}
 </style>

@@ -26,19 +26,19 @@
 				<v-table>
 					<thead>
 						<tr>
-							<th class="text-left">
+							<th class="text-left f-20">
 								Descrição
 							</th>
-							<th class="text-left">
+							<th class="text-left f-20">
 								Tipo
 							</th>
-              <th class="text-left">
+              <th class="text-left f-20">
 								Valor
 							</th>
-              <th class="text-left">
+              <th class="text-left f-20">
 								Estoque
 							</th>
-              <th class="text-left">
+              <th class="text-left f-20">
 								Duração (min)
 							</th>
               <th>
