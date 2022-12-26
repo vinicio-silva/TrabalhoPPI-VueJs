@@ -15,10 +15,10 @@
 			<div class="pa-6">
         <div class="d-flex justify-space-between pr-8">
           <div class="d-flex" style="min-width: 300px;">
-            <v-text-field class="mx-2" placeholder="Buscar item" prepend-inner-icon="mdi-magnify" filled dense></v-text-field>
+            <v-text-field class="mx-2" placeholder="Buscar agendamento" prepend-inner-icon="mdi-magnify" filled dense></v-text-field>
           </div>
           <div>
-            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px" to="/equipe/create">
+            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px">
               Adicionar agendamento
             </v-btn>
           </div>
