@@ -4,8 +4,8 @@
 		<div class="w-100">
 			<div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
-          <h2>Produtos & Serviços</h2>
-          <div class="subtitle">Gerencie todos os produtos e serviços oferecidos por você.</div>
+          <h2>Serviços</h2>
+          <div class="subtitle">Gerencie todos os serviços oferecidos por você.</div>
         </div>
 				<v-toolbar color="white" class="pa-2">
 					<v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
@@ -29,14 +29,8 @@
 							<th class="text-left f-20">
 								Descrição
 							</th>
-							<th class="text-left f-20">
-								Tipo
-							</th>
               <th class="text-left f-20">
 								Valor
-							</th>
-              <th class="text-left f-20">
-								Estoque
 							</th>
               <th class="text-left f-20">
 								Duração (min)
@@ -48,9 +42,7 @@
 					<tbody v-for="item in services" :key="item.id">
 						<tr class="border_bottom">
 							<td>{{ item.descricao }}</td>
-							<td>{{ item.tipo }}</td>
               <td>{{ item.valor }}</td>
-              <td>{{ item.estoque }}</td>
               <td>{{ item.duracao }}</td>
               <td>
                 <div class="d-flex justify-end">
@@ -83,9 +75,9 @@ export default {
 	data() {
 		return {
 			services: {
-        '1' : { "descricao": "CORTE", "tipo": "Serviço", "estoque": "---", "valor":"R$ 40.00", "duracao":"30" },
-        '2' : { "descricao": "BARBA", "tipo": "Serviço", "estoque": "---", "valor":"R$ 20.00", "duracao":"20"},
-        '3' : { "descricao": "HAIR SPRAY", "tipo": "Produto", "estoque": "8", "valor":"R$ 35.00", "duracao":"---"},
+        '1' : { "descricao": "CORTE","valor":"R$ 40.00", "duracao":"30" },
+        '2' : { "descricao": "BARBA","valor":"R$ 20.00", "duracao":"20"},
+        '3' : { "descricao": "MASSAGEM", "valor":"R$ 35.00", "duracao":"---"},
       },
 		}
 	}

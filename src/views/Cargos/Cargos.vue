@@ -4,8 +4,8 @@
     <div class="w-100">
       <div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
-          <h2 class="title">Equipe</h2>
-          <div class="subtitle">Veja todas as informações sobre sua equipe</div>
+          <h2 class="title">Cargos</h2>
+          <div class="subtitle">Veja todos os cargos</div>
         </div>
         <v-toolbar color="white" class="pa-2">
           <v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
@@ -15,11 +15,11 @@
       <div class="pa-6">
         <div class="d-flex justify-space-between pr-8">
           <div class="d-flex" style="min-width: 300px;">
-            <v-text-field class="mx-2" placeholder="Buscar colaborador" prepend-inner-icon="mdi-magnify" filled dense></v-text-field>
+            <v-text-field class="mx-2" placeholder="Buscar cargo" prepend-inner-icon="mdi-magnify" filled dense></v-text-field>
           </div>
           <div>
-            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px" to="/equipe/create">
-              Adicionar membro
+            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px" to="/cargos/create">
+              Adicionar cargo
             </v-btn>
           </div>
         </div>
@@ -30,13 +30,7 @@
                 ID
               </th>
               <th class="text-left f-20">
-                Nome
-              </th>
-              <th class="text-left f-20">
                 Cargo
-              </th>
-              <th class="text-left f-20">
-                Serviços
               </th>
               <th>
               </th>
@@ -45,13 +39,7 @@
           <tbody v-for="item, index in users">
             <tr class="border_bottom">
               <td>{{ index }}</td>
-              <td>{{ item.nome }}</td>
               <td>{{ item.cargo }}</td>
-              <td>
-                <div class="d-flex flex-row">
-                  <div class="pr-2" v-for="atividade in item.atividades">{{ atividade }};</div>
-                </div>
-              </td>
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
@@ -83,8 +71,8 @@ export default {
   data() {
     return {
       users: {
-        '1' : { "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba"] },
-        '2' : { "nome": "Felipe Cintra", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba", "Sombrancelha"] },
+        '1' : { "cargo": "Cabelereiro"},
+        '2' : { "cargo": "Cabelereiro"},
       },
     }
   }

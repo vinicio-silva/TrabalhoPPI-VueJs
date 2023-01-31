@@ -18,7 +18,7 @@
 					<v-label class="lab">Senha</v-label>
 					<v-text-field class="box" id="password" prepend-icon="lock" name="password" type="password"></v-text-field>
 					<input class="cb" type="checkbox" id="keepConnected">
-					<label style="margin-left: 1%;" for="keepConnected"> Mater Conectado</label>
+					<label style="margin-left: 1%;" for="keepConnected"> Manter Conectado</label>
 					<a class="esqueciSenha" href="https://ufu.br/">Esqueci a senha!</a><br>
 					<button class="Entrar">Entrar</button>
 				</v-form>
