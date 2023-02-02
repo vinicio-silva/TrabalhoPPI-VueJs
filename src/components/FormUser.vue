@@ -14,27 +14,27 @@
       </v-row>
       <v-row>
         <v-col cols="12" md="5">
-          <label for="nome">CPF</label>
+          <label for="cpf">CPF</label>
           <v-text-field v-model="form.cpf" :rules="cpfRules" placeholder="CPF" class="mt-1" required></v-text-field>
         </v-col>
         <v-col cols="12" md="5">
-          <label for="email">Telefone</label>
+          <label for="telefone">Telefone</label>
           <v-text-field v-model="form.telefone" :rules="telefoneRules" placeholder="Telefone" class="mt-1" required></v-text-field>
         </v-col>
         <v-col cols="12" md="2">
-          <label for="email">Data de Nascimento</label>
+          <label for="data_nascimento">Data de Nascimento</label>
           <Datepicker class="pt-3" locale="pt" auto-apply :enable-time-picker="false" v-model="form.data_nascimento" :flow="flow"></Datepicker>
         </v-col>
       </v-row>
       <v-row>
         <v-col cols="12" md="6">
-          <label for="nome">Cargo</label>
+          <label for="cargo">Cargo</label>
           <v-select v-model="form.cargo" :items="cargos" :rules="cargoRules" placeholder="Cargo" class="mt-1" required></v-select>
         </v-col>
 
         <v-col cols="12" md="6">
-          <label for="email">Serviços</label>
-          <v-select v-model="form.atividades" multiple :items="atividades" :rules="atividadesRules" placeholder="Serviços" class="mt-1" required></v-select>
+          <label for="servico">Serviços</label>
+          <v-select v-model="form.servicos" multiple :items="servicos" :rules="servicosRules" placeholder="Serviços" class="mt-1" required></v-select>
         </v-col>
       </v-row>
       <div class="d-flex justify-end">
@@ -64,7 +64,7 @@ export default {
       cpf: '',
       telefone: '',
       cargo: [],
-      atividades: [],
+      servicos: [],
     },
     nameRules: [
       v => !!v || 'O campo de nome é obrigatório',
@@ -82,12 +82,12 @@ export default {
     cargoRules: [
       v => !!v.length || 'O campo de cargo é obrigatório',
     ],
-    atividadesRules: [
+    servicosRules: [
       v => !!v.length || 'O campo de serviços é obrigatório',
     ],
     flow: ['month', 'year', 'calendar'],
     cargos: ['Cabelereiro', 'Gerente', 'Recepcionista'],
-    atividades: ['Cabelo', 'Barba', 'Sombrancelha', 'Limpeza Facial']
+    servicos: ['Cabelo', 'Barba', 'Sombrancelha', 'Limpeza Facial']
   }),
   created () {
     if (this.user) {

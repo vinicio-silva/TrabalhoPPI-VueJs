@@ -36,14 +36,14 @@
               </th>
             </tr>
           </thead>
-          <tbody v-for="item, index in users">
+          <tbody v-for="item, index in cargos">
             <tr class="border_bottom">
               <td>{{ index }}</td>
               <td>{{ item.cargo }}</td>
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'user-edit', params: {id: index}}">
+                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'cargo-edit', params: {id: index}}">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>
@@ -70,9 +70,9 @@ export default {
   },
   data() {
     return {
-      users: {
+      cargos: {
         '1' : { "cargo": "Cabelereiro"},
-        '2' : { "cargo": "Cabelereiro"},
+        '2' : { "cargo": "Barbeiro"},
       },
     }
   }

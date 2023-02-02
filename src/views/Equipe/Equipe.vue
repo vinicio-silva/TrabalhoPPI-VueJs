@@ -49,7 +49,7 @@
               <td>{{ item.cargo }}</td>
               <td>
                 <div class="d-flex flex-row">
-                  <div class="pr-2" v-for="atividade in item.atividades">{{ atividade }};</div>
+                  <div class="pr-2" v-for="servico in item.servicos">{{ servico }};</div>
                 </div>
               </td>
               <td>
@@ -83,8 +83,8 @@ export default {
   data() {
     return {
       users: {
-        '1' : { "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba"] },
-        '2' : { "nome": "Felipe Cintra", "cargo": "Cabelereiro", "atividades": ["Cabelo", "Barba", "Sombrancelha"] },
+        '1' : { "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "servicos": ["Cabelo", "Barba"] },
+        '2' : { "nome": "Felipe Cintra", "cargo": "Cabelereiro", "servicos": ["Cabelo", "Barba", "Sombrancelha"] },
       },
     }
   }

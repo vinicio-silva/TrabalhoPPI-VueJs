@@ -18,7 +18,7 @@
             <v-text-field class="mx-2" placeholder="Buscar agendamento" prepend-inner-icon="mdi-magnify" filled dense></v-text-field>
           </div>
           <div>
-            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px">
+            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px" to="/agenda/create">
               Adicionar agendamento
             </v-btn>
           </div>
@@ -45,7 +45,7 @@
 							</th>
 						</tr>
 					</thead>
-					<tbody v-for="item in agenda" :key="item.id">
+					<tbody v-for="item, index in agenda" :key="item.id">
 						<tr class="border_bottom">
 							<td>{{ item.cliente }}</td>
               <td>
@@ -59,7 +59,7 @@
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification">
+                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'agenda-edit', params: {id: index}}">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>

@@ -18,7 +18,7 @@
             <v-text-field class="mx-2" placeholder="Buscar item" prepend-inner-icon="mdi-magnify" filled dense></v-text-field>
           </div>
           <div>
-            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px">
+            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px" to="/servicos/create">
               Adicionar item
             </v-btn>
           </div>
@@ -39,7 +39,7 @@
 							</th>
 						</tr>
 					</thead>
-					<tbody v-for="item in services" :key="item.id">
+					<tbody v-for="item, index in servicos" :key="item.id">
 						<tr class="border_bottom">
 							<td>{{ item.descricao }}</td>
               <td>{{ item.valor }}</td>
@@ -47,7 +47,7 @@
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification">
+                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'servico-edit', params: {id: index}}">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>
@@ -74,7 +74,7 @@ export default {
 	},
 	data() {
 		return {
-			services: {
+			servicos: {
         '1' : { "descricao": "CORTE","valor":"R$ 40.00", "duracao":"30" },
         '2' : { "descricao": "BARBA","valor":"R$ 20.00", "duracao":"20"},
         '3' : { "descricao": "MASSAGEM", "valor":"R$ 35.00", "duracao":"---"},

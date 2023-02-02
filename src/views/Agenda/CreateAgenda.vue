@@ -4,7 +4,7 @@
     <div class="w-100">
       <div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
-          <h2>Equipe</h2>
+          <h2>Agendamentos</h2>
           <v-breadcrumbs class="px-0" :items="items">
             <template v-slot:divider>
               <v-icon>mdi-chevron-right</v-icon>
@@ -17,19 +17,19 @@
         </v-toolbar>
       </div>
       <div class="pa-12">
-        <h1>Adicionar membro</h1>
-        <FormUser/>
+        <h1>Adicionar agendamento</h1>
+        <FormAgenda @update-agendamento="updateAgendamento"/>
       </div>
     </div>
   </div>
 </template>
 <script>
 import Sidebar from '@/components/Sidebar';
-import FormUser from '@/components/FormUser';
+import FormAgenda from '@/components/FormAgenda';
 export default {
   components: {
     Sidebar,
-    FormUser
+    FormAgenda
   },
   data() {
     return {
@@ -40,16 +40,21 @@ export default {
           href: '/dashboard',
         },
         {
-          text: 'Equipe',
+          text: 'Agendamentos',
           disabled: false,
-          href: '/equipe',
+          href: '/agenda',
         },
         {
-          text: 'Adicionar membro',
+          text: 'Adicionar agendamento',
           disabled: true,
           href: 'breadcrumbs_link_1',
         },
       ],
+    }
+  },
+  methods: {
+    updateAgendamento (agendamento) {
+      console.log(agendamento);
     }
   },
 }

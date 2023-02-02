@@ -35,8 +35,8 @@ export default {
   data() {
     return {
       users: {
-        '1' : { "nome": "Vinicio Bernardes", "email": 'viniciobernardessilva@gmail.com', "data_nascimento" : '05/27/2000', "cpf": '14494199680', "telefone": '34996786374',"cargo": ["Cabelereiro"], "atividades": ["Cabelo", "Barba"] },
-        '2' : { "nome": "Felipe Cintra", "email": 'felipinho@gmail.com', "data_nascimento" : '12/25/2001', "cpf": '11111111111', "telefone": '34988063044',"cargo": ["Cabelereiro"], "atividades": ["Cabelo", "Barba", "Limpeza Facial"] },
+        '1' : { "nome": "Vinicio Bernardes", "email": 'viniciobernardessilva@gmail.com', "data_nascimento" : '05/27/2000', "cpf": '14494199680', "telefone": '34996786374',"cargo": ["Cabelereiro"], "servicos": ["Cabelo", "Barba"] },
+        '2' : { "nome": "Felipe Cintra", "email": 'felipinho@gmail.com', "data_nascimento" : '12/25/2001', "cpf": '11111111111', "telefone": '34988063044',"cargo": ["Cabelereiro"], "servicos": ["Cabelo", "Barba", "Limpeza Facial"] },
       },
       items: [
         {

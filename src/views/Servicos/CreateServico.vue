@@ -4,7 +4,7 @@
     <div class="w-100">
       <div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
-          <h2>Equipe</h2>
+          <h2>Serviços</h2>
           <v-breadcrumbs class="px-0" :items="items">
             <template v-slot:divider>
               <v-icon>mdi-chevron-right</v-icon>
@@ -17,19 +17,19 @@
         </v-toolbar>
       </div>
       <div class="pa-12">
-        <h1>Adicionar membro</h1>
-        <FormUser/>
+        <h1>Adicionar serviço</h1>
+        <FormServico/>
       </div>
     </div>
   </div>
 </template>
 <script>
 import Sidebar from '@/components/Sidebar';
-import FormUser from '@/components/FormUser';
+import FormServico from '@/components/FormServico';
 export default {
   components: {
     Sidebar,
-    FormUser
+    FormServico
   },
   data() {
     return {
@@ -40,12 +40,12 @@ export default {
           href: '/dashboard',
         },
         {
-          text: 'Equipe',
+          text: 'Serviços',
           disabled: false,
-          href: '/equipe',
+          href: '/servicos',
         },
         {
-          text: 'Adicionar membro',
+          text: 'Adicionar serviço',
           disabled: true,
           href: 'breadcrumbs_link_1',
         },

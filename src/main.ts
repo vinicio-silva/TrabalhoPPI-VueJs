@@ -21,8 +21,14 @@ import Equipe from '@/views/Equipe/Equipe.vue'
 import CreateUser from '@/views/Equipe/CreateUser.vue'
 import EditUser from '@/views/Equipe/EditUser.vue'
 import Agenda from '@/views/Agenda/Agenda.vue'
-import Atividades from '@/views/Servicos/Servicos.vue'
+import CreateAgenda from '@/views/Agenda/CreateAgenda.vue'
+import EditAgenda from '@/views/Agenda/EditAgenda.vue'
+import Servicos from '@/views/Servicos/Servicos.vue'
+import CreateServico from '@/views/Servicos/CreateServico.vue'
+import EditServico from '@/views/Servicos/EditServico.vue'
 import Cargos from '@/views/Cargos/Cargos.vue'
+import CreateCargo from '@/views/Cargos/CreateCargo.vue'
+import EditCargo from '@/views/Cargos/EditCargo.vue'
 import Configuracao from '@/views/Configuracao.vue'
 import Suporte from '@/views/Suporte.vue'
 
@@ -34,8 +40,14 @@ const routes = [
   { path: '/equipe/create', component: CreateUser },
   { path: '/equipe/:id/edit', component: EditUser, name: 'user-edit', props: true },
   { path: '/agenda', component: Agenda },
-  { path: '/servicos', component: Atividades },
+  { path: '/agenda/create', component: CreateAgenda },
+  { path: '/agenda/:id/edit', component: EditAgenda, name: 'agenda-edit', props: true },
+  { path: '/servicos', component: Servicos },
+  { path: '/servicos/create', component: CreateServico },
+  { path: '/servicos/:id/edit', component: EditServico, name: 'servico-edit', props: true },
   { path: '/cargos', component: Cargos },
+  { path: '/cargos/create', component: CreateCargo },
+  { path: '/cargos/:id/edit', component: EditCargo, name: 'cargo-edit', props: true },
   { path: '/configuracao', component: Configuracao },
   { path: '/suporte', component: Suporte },
   { path: '/equipe', component: Equipe },
