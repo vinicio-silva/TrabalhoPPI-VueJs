@@ -39,7 +39,7 @@
 							</th>
 						</tr>
 					</thead>
-					<tbody v-for="item, index in servicos" :key="item.id">
+					<tbody v-for="item in servicos" :key="item.id">
 						<tr class="border_bottom">
 							<td>{{ item.descricao }}</td>
               <td>{{ item.valor }}</td>
@@ -47,12 +47,12 @@
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'servico-edit', params: {id: index}}">
+                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'servico-edit', params: {id: item.idServicos}}">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>
                   </v-btn>
-                  <v-btn flat stacked title="notification" value="notification">
+                  <v-btn flat stacked title="notification" value="notification" @click="deleteServico(item.idServicos)">
                     <v-icon color="#CE2D4F">
                       mdi-trash-can-outline
                     </v-icon>
@@ -68,19 +68,33 @@
 </template>
 <script>
 import Sidebar from '@/components/Sidebar';
+import axios from 'axios';
 export default {
 	components: {
 		Sidebar
 	},
 	data() {
 		return {
-			servicos: {
-        '1' : { "descricao": "CORTE","valor":"R$ 40.00", "duracao":"30" },
-        '2' : { "descricao": "BARBA","valor":"R$ 20.00", "duracao":"20"},
-        '3' : { "descricao": "MASSAGEM", "valor":"R$ 35.00", "duracao":"---"},
-      },
+			servicos: [],
 		}
-	}
+	},
+  created() {
+    this.getServicos();
+  },
+  methods: {
+    getServicos() {
+      axios.get('http://localhost:8080/servicos/find-all').then(response => {
+        this.servicos = response.data;
+      });
+    },
+    deleteServico(id) {
+      var _this = this;
+      axios.delete('http://localhost:8080/servicos/delete?idServico=' + id).then(function (response) {
+        alert(response.data);
+        _this.getServicos();
+      });
+    }
+  },
 }
 </script>
 <style scoped>

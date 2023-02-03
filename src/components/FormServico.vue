@@ -25,8 +25,9 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-  props: ['servico'],
+  props: ['create', 'id'],
   data: () => ({
     valid: false,
     form: {
@@ -45,18 +46,48 @@ export default {
     ],
   }),
   created () {
-    if (this.servico) {
-      this.form = this.servico;
-    }
+    if (!this.create) {
+			axios.get('http://localhost:8080/servicos/find-by-id?idServicos=' + this.id).then(response => {
+				this.form = response.data;
+			});
+		}
   },
   methods: {
     async validate () {
-        const { valid } = await this.$refs.form.validate()
+      const { valid } = await this.$refs.form.validate()
 
-        if (valid) {
-          alert("Formulário válido")
+      if (valid) {
+        if (this.create) {
+        this.saveServico();
+        } else {
+          this.updateServico();
         }
-      },
+      }
+    },
+    saveServico() {
+      axios.post('http://localhost:8080/servicos/save', this.form)
+      .then(function (response) {
+        window.location.href="/servicos";
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    updateServico() {
+      var form = {
+        idServicos: this.id,
+        descricao: this.form.descricao,
+        valor: this.form.valor,
+        duracao: this.form.duracao,
+      }
+      axios.put('http://localhost:8080/servicos/update', form)
+      .then(function (response) {
+        window.location.href="/servicos";
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
   },
 }
 </script>

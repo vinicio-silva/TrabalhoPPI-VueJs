@@ -22,9 +22,6 @@
           <thead>
             <tr>
               <th class="text-left f-20">
-                ID
-              </th>
-              <th class="text-left f-20">
                 Nome
               </th>
               <th class="text-left f-20">
@@ -36,7 +33,6 @@
           </thead>
           <tbody v-for="item, index in clientes">
             <tr class="border_bottom">
-              <td>{{ index }}</td>
               <td>{{ item.nome }}</td>
               <td>{{ item.email }}</td>
               <td>

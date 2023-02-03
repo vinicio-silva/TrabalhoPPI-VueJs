@@ -27,9 +27,6 @@
           <thead>
             <tr>
               <th class="text-left f-20">
-                ID
-              </th>
-              <th class="text-left f-20">
                 Cargo
               </th>
               <th>
@@ -38,7 +35,6 @@
           </thead>
           <tbody v-for="item in cargos">
             <tr class="border_bottom">
-              <td>{{ item.idCargo }}</td>
               <td>{{ item.cargo }}</td>
               <td>
                 <div class="d-flex justify-end">

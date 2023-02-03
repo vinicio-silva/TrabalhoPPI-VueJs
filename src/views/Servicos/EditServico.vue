@@ -18,7 +18,7 @@
       </div>
       <div class="pa-12">
         <h1>Editar serviço</h1>
-        <FormServico :servico="this.servicos[this.id]"/>
+        <FormServico :create="false" :id="this.id"/>
       </div>
     </div>
   </div>
@@ -34,11 +34,6 @@ export default {
   },
   data() {
     return {
-      servicos: {
-        '1' : { "descricao": "CORTE","valor":"R$ 40.00", "duracao":"30" },
-        '2' : { "descricao": "BARBA","valor":"R$ 20.00", "duracao":"20"},
-        '3' : { "descricao": "MASSAGEM", "valor":"R$ 35.00", "duracao":"---"},
-      },
       items: [
         {
           text: 'Geral',

@@ -18,7 +18,7 @@
       </div>
       <div class="pa-12">
         <h1>Adicionar serviço</h1>
-        <FormServico/>
+        <FormServico :create="true"/>
       </div>
     </div>
   </div>
