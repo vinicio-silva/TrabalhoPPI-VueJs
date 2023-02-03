@@ -36,19 +36,19 @@
               </th>
             </tr>
           </thead>
-          <tbody v-for="item, index in cargos">
+          <tbody v-for="item in cargos">
             <tr class="border_bottom">
-              <td>{{ index }}</td>
+              <td>{{ item.idCargo }}</td>
               <td>{{ item.cargo }}</td>
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'cargo-edit', params: {id: index}}">
+                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'cargo-edit', params: {id: item.idCargo}}">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>
                   </v-btn>
-                  <v-btn flat stacked title="notification" value="notification">
+                  <v-btn flat stacked title="notification" value="notification" @click="deleteCargo(item.idCargo)">
                     <v-icon color="#CE2D4F">
                       mdi-trash-can-outline
                     </v-icon>
@@ -64,18 +64,33 @@
 </template>
 <script>
 import Sidebar from '@/components/Sidebar';
+import axios from 'axios';
 export default {
   components: {
     Sidebar
   },
   data() {
     return {
-      cargos: {
-        '1' : { "cargo": "Cabelereiro"},
-        '2' : { "cargo": "Barbeiro"},
-      },
+      cargos: []
     }
-  }
+  },
+  created() {
+    this.getCargos();
+  },
+  methods: {
+    getCargos() {
+      axios.get('http://localhost:8080/cargo/find-all').then(response => {
+        this.cargos = response.data;
+      });
+    },
+    deleteCargo(id) {
+      var _this = this;
+      axios.delete('http://localhost:8080/cargo/delete?idCargo=' + id).then(function (response) {
+        alert(response.data);
+        _this.getCargos();
+      });
+    }
+  },
 }
 </script>
 <style scoped>

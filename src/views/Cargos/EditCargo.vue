@@ -18,7 +18,7 @@
       </div>
       <div class="pa-12">
         <h1>Editar cargo</h1>
-        <FormCargo :cargos="this.cargos[this.id]"/>
+        <FormCargo :create="false" :id="this.id"/>
       </div>
     </div>
   </div>
@@ -26,6 +26,7 @@
 <script>
 import Sidebar from '@/components/Sidebar';
 import FormCargo from '@/components/FormCargo';
+
 export default {
   props: ['id'],
   components: {
@@ -34,10 +35,6 @@ export default {
   },
   data() {
     return {
-      cargos: {
-        '1' : { "cargo": "Cabelereiro"},
-        '2' : { "cargo": "Barbeiro"},
-      },
       items: [
         {
           text: 'Geral',

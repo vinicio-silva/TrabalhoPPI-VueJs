@@ -18,7 +18,7 @@
       </div>
       <div class="pa-12">
         <h1>Adicionar cargo</h1>
-        <FormCargo/>
+        <FormCargo :create="true"/>
       </div>
     </div>
   </div>
