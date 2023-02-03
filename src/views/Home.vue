@@ -10,7 +10,7 @@
         <v-btn stacked variant="outlined" class="align-self-center" height="45px" to="/login">
           Login
         </v-btn>
-        <v-btn stacked variant="flat" height="45px" class="px-4 mx-3 button-color align-self-center">
+        <v-btn stacked variant="flat" height="45px" class="px-4 mx-3 button-color align-self-center" to="/cliente/create">
           Cadastrar
         </v-btn>
       </v-col>

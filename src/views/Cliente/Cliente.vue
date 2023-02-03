@@ -4,8 +4,8 @@
     <div class="w-100">
       <div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
-          <h2 class="title">Cargos</h2>
-          <div class="subtitle">Veja todos os cargos</div>
+          <h2 class="title">Clientes</h2>
+          <div class="subtitle">Veja todas as informações sobre seus clientes</div>
         </div>
         <v-toolbar color="white" class="pa-2">
           <v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
@@ -13,14 +13,9 @@
         </v-toolbar>
       </div>
       <div class="pa-6">
-        <div class="d-flex justify-space-between pr-8">
+        <div class="d-flex justify-start pr-8">
           <div class="d-flex" style="min-width: 300px;">
-            <v-text-field class="mx-2" placeholder="Buscar cargo" prepend-inner-icon="mdi-magnify" filled dense></v-text-field>
-          </div>
-          <div>
-            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px" to="/cargos/create">
-              Adicionar cargo
-            </v-btn>
+            <v-text-field class="mx-2" placeholder="Buscar cliente" prepend-inner-icon="mdi-magnify" filled dense></v-text-field>
           </div>
         </div>
         <v-table>
@@ -30,20 +25,24 @@
                 ID
               </th>
               <th class="text-left f-20">
-                Cargo
+                Nome
+              </th>
+              <th class="text-left f-20">
+                Email
               </th>
               <th>
               </th>
             </tr>
           </thead>
-          <tbody v-for="item, index in cargos">
+          <tbody v-for="item, index in clientes">
             <tr class="border_bottom">
               <td>{{ index }}</td>
-              <td>{{ item.cargo }}</td>
+              <td>{{ item.nome }}</td>
+              <td>{{ item.email }}</td>
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'cargo-edit', params: {id: index}}">
+                  <v-btn flat stacked title="notification" value="notification">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>
@@ -70,9 +69,9 @@ export default {
   },
   data() {
     return {
-      cargos: {
-        '1' : { "cargo": "Cabelereiro"},
-        '2' : { "cargo": "Barbeiro"},
+      clientes: {
+        '1' : { "nome": "Vinicio Bernardes", "email": "viniciobernardessilva@gmail.com" },
+        '2' : { "nome": "Felipe Cintra", "email": "felipinho@gmail.com"  },
       },
     }
   }

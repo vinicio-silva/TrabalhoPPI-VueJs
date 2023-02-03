@@ -2,28 +2,9 @@
   <v-form  ref="form" v-model="valid">
     <v-container class="px-0">
       <v-row>
-        <v-col cols="12" md="6">
+        <v-col cols="12">
           <label for="nome">Nome</label>
           <v-text-field v-model="form.nome" :rules="nameRules" placeholder="Nome" class="mt-1" required></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="6">
-          <label for="email">Email</label>
-          <v-text-field v-model="form.email" :rules="emailRules" placeholder="Email" class="mt-1" required></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="5">
-          <label for="cpf">CPF</label>
-          <v-text-field v-model="form.cpf" :rules="cpfRules" placeholder="CPF" class="mt-1" required></v-text-field>
-        </v-col>
-        <v-col cols="12" md="5">
-          <label for="telefone">Telefone</label>
-          <v-text-field v-model="form.telefone" :rules="telefoneRules" placeholder="Telefone" class="mt-1" required></v-text-field>
-        </v-col>
-        <v-col cols="12" md="2">
-          <label for="data_nascimento">Data de Nascimento</label>
-          <Datepicker class="pt-3" locale="pt" auto-apply :enable-time-picker="false" v-model="form.data_nascimento" :flow="flow"></Datepicker>
         </v-col>
       </v-row>
       <v-row>

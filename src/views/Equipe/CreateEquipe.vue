@@ -13,23 +13,23 @@
         </div>
         <v-toolbar color="white" class="pa-2">
           <v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
-          <v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile"></v-btn>
+          <v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" to="/cliente/edit"></v-btn>
         </v-toolbar>
       </div>
       <div class="pa-12">
         <h1>Adicionar membro</h1>
-        <FormUser/>
+        <FormEquipe/>
       </div>
     </div>
   </div>
 </template>
 <script>
 import Sidebar from '@/components/Sidebar';
-import FormUser from '@/components/FormUser';
+import FormEquipe from '@/components/FormEquipe';
 export default {
   components: {
     Sidebar,
-    FormUser
+    FormEquipe
   },
   data() {
     return {

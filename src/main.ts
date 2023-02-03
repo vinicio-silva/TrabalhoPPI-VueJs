@@ -18,8 +18,11 @@ import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Dashboard from '@/views/Dashboard.vue'
 import Equipe from '@/views/Equipe/Equipe.vue'
-import CreateUser from '@/views/Equipe/CreateUser.vue'
-import EditUser from '@/views/Equipe/EditUser.vue'
+import CreateUser from '@/views/Equipe/CreateEquipe.vue'
+import EditUser from '@/views/Equipe/EditEquipe.vue'
+import Cliente from '@/views/Cliente/Cliente.vue'
+import CreateCliente from '@/views/Cliente/CreateCliente.vue'
+import EditCliente from '@/views/Cliente/EditCliente.vue'
 import Agenda from '@/views/Agenda/Agenda.vue'
 import CreateAgenda from '@/views/Agenda/CreateAgenda.vue'
 import EditAgenda from '@/views/Agenda/EditAgenda.vue'
@@ -39,6 +42,9 @@ const routes = [
   { path: '/equipe', component: Equipe },
   { path: '/equipe/create', component: CreateUser },
   { path: '/equipe/:id/edit', component: EditUser, name: 'user-edit', props: true },
+  { path: '/cliente', component: Cliente },
+  { path: '/cliente/create', component: CreateCliente },
+  { path: '/cliente/edit', component: EditCliente, name: 'user-edit', props: true},
   { path: '/agenda', component: Agenda },
   { path: '/agenda/create', component: CreateAgenda },
   { path: '/agenda/:id/edit', component: EditAgenda, name: 'agenda-edit', props: true },
@@ -62,7 +68,6 @@ const router = createRouter({
 import { registerPlugins } from '@/plugins'
 
 const app = createApp(App)
-
 
 .use(router)
 
