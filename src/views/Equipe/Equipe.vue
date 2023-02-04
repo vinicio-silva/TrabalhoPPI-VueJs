@@ -45,7 +45,7 @@
               <td>{{ item.cargo.cargo }}</td>
               <td>
                 <div class="d-flex flex-row">
-                  <div class="pr-2" v-for="servico in item.servicos">{{ servico }};</div>
+                  <div class="pr-2" v-for="servico in item.servicos">{{ servico.descricao }};</div>
                 </div>
               </td>
               <td>

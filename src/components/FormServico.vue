@@ -40,7 +40,6 @@ export default {
     ],
     valorRules: [
       v => !!v || 'O campo de valor é obrigatório',
-      v => v.indexOf(',') == -1 || 'Os centavos devem ser separados por ponto',
       v => isNaN(v) == false || 'O valor deve ser um número'
     ],
     duracaoRules: [

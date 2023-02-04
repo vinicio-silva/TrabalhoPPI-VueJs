@@ -36,7 +36,7 @@ export default {
     valid: false,
     form: {
       nome: '',
-      cargo: [],
+      cargo: '',
       servicos: [],
     },
     cargos: [],
@@ -45,10 +45,10 @@ export default {
       v => !!v || 'O campo de nome é obrigatório',
     ],
     cargoRules: [
-      v => v.length > 0 || 'O campo de cargo é obrigatório',
+      v => !!v || 'O campo de cargo é obrigatório',
     ],
     servicosRules: [
-      v => v.length > 0 || 'O campo de serviços é obrigatório',
+      v => v.length != 0 || 'O campo de serviços é obrigatório',
     ],
   }),
   created() {
@@ -86,7 +86,7 @@ export default {
 
       axios.post('http://localhost:8080/profissional/save', this.form)
       .then(function (response) {
-        //window.location.href="/equipe";
+        window.location.href="/equipe";
       })
       .catch(function (error) {
         console.log(error);
