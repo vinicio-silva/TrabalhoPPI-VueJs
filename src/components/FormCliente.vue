@@ -99,7 +99,7 @@ export default {
     saveCliente() {
       axios.post('http://localhost:8080/client/save', this.form)
       .then(function (response) {
-        window.location.href="/user";
+        window.location.href="/dashboard";
       })
       .catch(function (error) {
         console.log(error);
@@ -117,7 +117,7 @@ export default {
       }
       axios.put('http://localhost:8080/client/update', form)
       .then(function (response) {
-        window.location.href="/cliente";
+        window.location.href="/dashboard";
       })
       .catch(function (error) {
         console.log(error);
