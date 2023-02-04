@@ -6,6 +6,10 @@
           <label for="nome">Nome</label>
           <v-text-field v-model="form.nome" :rules="nameRules" placeholder="Nome" class="mt-1" required></v-text-field>
         </v-col>
+        <v-col cols="12" md="6">
+          <label for="email">Email</label>
+          <v-text-field v-model="form.email" :rules="emailRules" placeholder="Email" class="mt-1" required></v-text-field>
+        </v-col>
       </v-row>
       <v-row>
         <v-col cols="12">
@@ -23,8 +27,8 @@
           <v-text-field v-model="form.telefone" :rules="telefoneRules" placeholder="Telefone" class="mt-1" required></v-text-field>
         </v-col>
         <v-col cols="12" md="2">
-          <label for="data_nascimento">Data de Nascimento</label>
-          <Datepicker class="pt-3" locale="pt" auto-apply :enable-time-picker="false" v-model="form.data_nascimento" :flow="flow"></Datepicker>
+          <label for="dtNascimento">Data de Nascimento</label>
+          <Datepicker class="pt-3" locale="pt" auto-apply :enable-time-picker="false" v-model="form.dtNascimento" :flow="flow"></Datepicker>
         </v-col>
       </v-row>
       <div class="d-flex justify-end">
@@ -39,9 +43,9 @@
 <script>
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-
+import axios from 'axios';
 export default {
-  props: ['user'],
+  props: ['create', 'id'],
   data: () => ({
     components: {
       Datepicker
@@ -50,7 +54,8 @@ export default {
     form: {
       nome: '',
       email: '',
-      data_nascimento: '',
+      senha: '',
+      dtNascimento: '',
       cpf: '',
       telefone: '',
     },
@@ -72,21 +77,53 @@ export default {
     ],
     flow: ['month', 'year', 'calendar'],
   }),
-  created () {
-    if (this.user) {
-      this.form = this.user;
-    }
-  },
-  methods: {
-    async validate () {
-        const { valid } = await this.$refs.form.validate()
+  created() {
+		if (!this.create) {
+      axios.get('http://localhost:8080/client/find-by-id?idUser=' + this.id).then(response => {
+				this.form = response.data;
+			});
+		}
+	},
+	methods: {
+		async validate() {
+			const { valid } = await this.$refs.form.validate()
 
-        if (valid) {
-          alert("Formulário válido")
-          window.location.href= "/dashboard";
-        }
-      },
-  },
+			if (valid) {
+				if (this.create) {
+					this.saveCliente();
+				} else {
+          this.updateCliente();
+				}
+			}
+		},
+    saveCliente() {
+      axios.post('http://localhost:8080/client/save', this.form)
+      .then(function (response) {
+        window.location.href="/user";
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    updateCliente() {
+      var form = {
+        idUser: this.id,
+        nome: this.form.nome,
+        email: this.form.email,
+        senha: this.form.senha,
+        dtNascimento: this.form.dtNascimento,
+        cpf: this.form.cpf,
+        telefone: this.form.telefone,
+      }
+      axios.put('http://localhost:8080/client/update', form)
+      .then(function (response) {
+        window.location.href="/cliente";
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+	},
 }
 </script>
 

@@ -10,7 +10,7 @@
       </div>
       <div class="pa-12">
         <h1>Editar membro</h1>
-        <FormCliente/>
+        <FormCliente :create="false" :id="this.id"/>
       </div>
     </div>
   </div>

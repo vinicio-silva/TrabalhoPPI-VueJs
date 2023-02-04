@@ -18,7 +18,7 @@
       </div>
       <div class="pa-12">
         <h1>Adicionar agendamento</h1>
-        <FormAgenda @update-agendamento="updateAgendamento"/>
+        <FormAgenda :create="true"/>
       </div>
     </div>
   </div>
@@ -50,11 +50,6 @@ export default {
           href: 'breadcrumbs_link_1',
         },
       ],
-    }
-  },
-  methods: {
-    updateAgendamento (agendamento) {
-      console.log(agendamento);
     }
   },
 }
