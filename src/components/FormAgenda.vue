@@ -58,12 +58,14 @@ export default {
     ],
     valorRules: [
       v => !!v || 'O campo de valor é obrigatório',
+      v => v.indexOf(',') == -1 || 'Os centavos devem ser separados por ponto',
+      v => isNaN(v) == false || 'O valor deve ser um número'
     ],
     profissionalRules: [
       v => !!v || 'O campo de profissional é obrigatório',
     ],
     servicosRules: [
-      v => !!v || 'O campo de serviços é obrigatório',
+      v => v.length!=0 || 'O campo de serviços é obrigatório',
     ],
     clientes: [],
     equipe: [],

@@ -45,10 +45,10 @@ export default {
       v => !!v || 'O campo de nome é obrigatório',
     ],
     cargoRules: [
-      v => !!v || 'O campo de cargo é obrigatório',
+      v => v.length > 0 || 'O campo de cargo é obrigatório',
     ],
     servicosRules: [
-      v => !!v || 'O campo de serviços é obrigatório',
+      v => v.length > 0 || 'O campo de serviços é obrigatório',
     ],
   }),
   created() {
