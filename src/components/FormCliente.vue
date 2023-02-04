@@ -59,16 +59,22 @@ export default {
     ],
     emailRules: [
       v => !!v || 'O campo de E-mail é obrigatório',
-      v => /.+@.+/.test(v) || 'E-mail inválido',
+      v => /.+\@.+/.test(v) || 'E-mail inválido',
     ],
     senhaRules: [
       v => !!v || 'O campo de senha é obrigatório',
+      v => v.length >7 || 'A senha deve ter comprimento entre 8 e 35 caracteres',
+      v => /.*[1234567890].*/.test(v) && /.*[abcdefghijklmnoppppqrstuvwxyz].*/.test(v) || 'A senha deve conter no mínimo um dígito e uma letra',
     ],
     cpfRules: [
       v => !!v || 'O campo de cpf é obrigatório',
+      v => /.*\D.*/.test(v) == false || 'CPF deve ter apenas dígitos',
+      v => v.length == 11 || 'CPF inválido',
     ],
     telefoneRules: [
       v => !!v || 'O campo de nome é obrigatório',
+      v => /.*\D.*/.test(v) == false || 'Telefone deve ter apenas dígitos',
+      v => v.length == 11 || 'Informe o número completo com DDD',
     ],
     flow: ['month', 'year', 'calendar'],
   }),
@@ -83,7 +89,6 @@ export default {
 
         if (valid) {
           alert("Formulário válido")
-          window.location.href= "/dashboard";
         }
       },
   },
