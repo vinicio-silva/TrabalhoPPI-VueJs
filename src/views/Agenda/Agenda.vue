@@ -45,26 +45,26 @@
 							</th>
 						</tr>
 					</thead>
-					<tbody v-for="item, index in agenda" :key="item.id">
+					<tbody v-for="item in agenda">
 						<tr class="border_bottom">
-							<td>{{ item.cliente }}</td>
+							<td>{{ item.cliente.nome }}</td>
               <td>
                 <div class="d-flex flex-row" >
                     <div class="pr-2" v-for="servico in item.servicos">{{ servico }};</div>
                 </div>
               </td>
               <td>{{ item.valor }}</td>
-              <td>{{ item.datahora }}</td>
-              <td>{{ item.profissional }}</td>
+              <td>{{ item.data }}</td>
+              <td>{{ item.profissional.nome }}</td>
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'agenda-edit', params: {id: index}}">
+                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'agenda-edit', params: {id: item.idAgendamento}}">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>
                   </v-btn>
-                  <v-btn flat stacked title="notification" value="notification">
+                  <v-btn flat stacked title="notification" value="notification" @click="deleteAgendamento(item.idAgendamento)">
                     <v-icon color="#CE2D4F">
                       mdi-trash-can-outline
                     </v-icon>
@@ -80,18 +80,33 @@
 </template>
 <script>
 import Sidebar from '@/components/Sidebar';
+import axios from 'axios';
 export default {
 	components: {
 		Sidebar
 	},
 	data() {
 		return {
-			agenda: {
-        '1' : { "cliente": "Vinicio Bernardes", "servicos": ["Cabelo", "Barba"], "valor": "R$ 60", "datahora": "21/12/2022 19:30", "profissional": "Dimitri Marco" },
-        '2' : { "cliente": "Felipe Cintra",  "servicos": ["Cabelo", "Barba", "Sombrancelha"], "valor": "R$ 85", "datahora": "21/12/2022 19:30", "profissional": "Michael Rusbe" },
-      },
+			agenda: []
 		}
-	}
+	},
+  created() {
+    this.getAgendamento();
+  },
+  methods: {
+    getAgendamento() {
+      axios.get('http://localhost:8080/agendamentos/findAll').then(response => {
+        this.equipe = response.data;
+      });
+    },
+    deleteAgendamento(id) {
+      var _this = this;
+      axios.delete('http://localhost:8080/agendamentos/delete?idAgendamento=' + id).then(function (response) {
+        alert(response.data);
+        _this.getAgendamento();
+      });
+    }
+  },
 }
 </script>
 <style scoped>

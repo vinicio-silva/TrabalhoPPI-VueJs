@@ -15,7 +15,7 @@
 
         <v-col cols="12" md="6">
           <label for="servico">Serviços</label>
-          <v-select v-model="form.servicos" multiple :items="servicos" item-title="descricao" item-value="idServicos" :rules="servicosRules" placeholder="Serviços" class="mt-1" required></v-select>
+          <v-select v-model="form.servicos" multiple :items="servicos" item-title="descricao" return-object :rules="servicosRules" placeholder="Serviços" class="mt-1" required></v-select>
         </v-col>
       </v-row>
       <div class="d-flex justify-end">
@@ -83,9 +83,10 @@ export default {
 			}
 		},
     saveProfissional() {
+
       axios.post('http://localhost:8080/profissional/save', this.form)
       .then(function (response) {
-        window.location.href="/equipe";
+        //window.location.href="/equipe";
       })
       .catch(function (error) {
         console.log(error);

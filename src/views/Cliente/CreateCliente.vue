@@ -3,7 +3,7 @@
     <div class="w-100">
       <div class="pa-12">
         <h1>Cadastro</h1>
-        <FormCliente/>
+        <FormCliente :create="true"/>
       </div>
     </div>
   </div>

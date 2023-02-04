@@ -18,7 +18,7 @@
       </div>
       <div class="pa-12">
         <h1>Editar agenda</h1>
-        <FormAgenda :agenda="this.agenda[this.id]"/>
+        <FormAgenda :create="false" :id="this.id"/>
       </div>
     </div>
   </div>
@@ -27,17 +27,12 @@
 import Sidebar from '@/components/Sidebar';
 import FormAgenda from '@/components/FormAgenda';
 export default {
-  props: ['id'],
   components: {
     Sidebar,
     FormAgenda
   },
   data() {
     return {
-      agenda: {
-        '1' : { "cliente": "Vinicio Bernardes", "servicos": ["Cabelo", "Barba"], "valor": "R$ 60", "data": "12/12/2022 19:30:00", "profissional": "Dimitri Marco" },
-        '2' : { "cliente": "Felipe Cintra",  "servicos": ["Cabelo", "Barba", "Sombrancelha"], "valor": "R$ 85", "data": "12/12/2022 19:30:00", "profissional": "Michael Rusbe" },
-      },
       items: [
         {
           text: 'Geral',

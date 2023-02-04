@@ -27,6 +27,12 @@
               <th class="text-left f-20">
                 Email
               </th>
+              <th class="text-left f-20">
+                Data de Nascimento
+              </th>
+              <th class="text-left f-20">
+                Telefone
+              </th>
               <th>
               </th>
             </tr>
@@ -35,15 +41,17 @@
             <tr class="border_bottom">
               <td>{{ item.nome }}</td>
               <td>{{ item.email }}</td>
+              <td>{{ item.dtNascimento }}</td>
+              <td>{{ item.telefone }}</td>
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification">
+                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'user-edit', params: {id: item.idUser}}">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>
                   </v-btn>
-                  <v-btn flat stacked title="notification" value="notification">
+                  <v-btn flat stacked title="notification" value="notification" @click="deleteCliente(item.idUser)">
                     <v-icon color="#CE2D4F">
                       mdi-trash-can-outline
                     </v-icon>
@@ -59,18 +67,33 @@
 </template>
 <script>
 import Sidebar from '@/components/Sidebar';
+import axios from 'axios';
 export default {
   components: {
     Sidebar
   },
   data() {
     return {
-      clientes: {
-        '1' : { "nome": "Vinicio Bernardes", "email": "viniciobernardessilva@gmail.com" },
-        '2' : { "nome": "Felipe Cintra", "email": "felipinho@gmail.com"  },
-      },
+      clientes: []
     }
-  }
+  },
+  created() {
+    this.getClientes();
+  },
+  methods: {
+    getClientes() {
+      axios.get('http://localhost:8080/client/find-all').then(response => {
+        this.clientes = response.data;
+      });
+    },
+    deleteCliente(id) {
+      var _this = this;
+      axios.delete('http://localhost:8080/client/delete?idUser=' + id).then(function (response) {
+        alert(response.data);
+        _this.getClientes();
+      });
+    }
+  },
 }
 </script>
 <style scoped>
