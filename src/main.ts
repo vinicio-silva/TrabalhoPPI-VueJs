@@ -41,7 +41,7 @@ const routes = [
   { path: '/dashboard', component: Dashboard },
   { path: '/equipe', component: Equipe },
   { path: '/equipe/create', component: CreateUser },
-  { path: '/equipe/:id/edit', component: EditUser, name: 'user-edit', props: true },
+  { path: '/equipe/:id/edit', component: EditUser, name: 'equipe-edit', props: true },
   { path: '/cliente', component: Cliente },
   { path: '/cliente/create', component: CreateCliente },
   { path: '/cliente/edit', component: EditCliente, name: 'user-edit', props: true},

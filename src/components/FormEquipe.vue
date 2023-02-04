@@ -10,12 +10,12 @@
       <v-row>
         <v-col cols="12" md="6">
           <label for="cargo">Cargo</label>
-          <v-select v-model="form.cargo" :items="cargos" :rules="cargoRules" placeholder="Cargo" class="mt-1" required></v-select>
+          <v-select v-model="form.cargo" :items="cargos" item-title="cargo" return-object :rules="cargoRules" placeholder="Cargo" class="mt-1" required></v-select>
         </v-col>
 
         <v-col cols="12" md="6">
           <label for="servico">Serviços</label>
-          <v-select v-model="form.servicos" multiple :items="servicos" :rules="servicosRules" placeholder="Serviços" class="mt-1" required></v-select>
+          <v-select v-model="form.servicos" multiple :items="servicos" item-title="descricao" item-value="idServicos" :rules="servicosRules" placeholder="Serviços" class="mt-1" required></v-select>
         </v-col>
       </v-row>
       <div class="d-flex justify-end">
@@ -28,62 +28,85 @@
 </template>
 
 <script>
-import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-
+import axios from 'axios';
 export default {
-  props: ['user'],
+  props: ['create', 'id'],
   data: () => ({
-    components: {
-      Datepicker
-    },
     valid: false,
     form: {
       nome: '',
-      email: '',
-      data_nascimento: '',
-      cpf: '',
-      telefone: '',
       cargo: [],
       servicos: [],
     },
+    cargos: [],
+    servicos: [],
     nameRules: [
       v => !!v || 'O campo de nome é obrigatório',
     ],
-    emailRules: [
-      v => !!v || 'O campo de E-mail é obrigatório',
-      v => /.+@.+/.test(v) || 'E-mail inválido',
-    ],
-    cpfRules: [
-      v => !!v || 'O campo de cpf é obrigatório',
-    ],
-    telefoneRules: [
-      v => !!v || 'O campo de nome é obrigatório',
-    ],
     cargoRules: [
-      v => !!v.length || 'O campo de cargo é obrigatório',
+      v => !!v || 'O campo de cargo é obrigatório',
     ],
     servicosRules: [
-      v => !!v.length || 'O campo de serviços é obrigatório',
+      v => !!v || 'O campo de serviços é obrigatório',
     ],
-    flow: ['month', 'year', 'calendar'],
-    cargos: ['Cabelereiro', 'Gerente', 'Recepcionista'],
-    servicos: ['Cabelo', 'Barba', 'Sombrancelha', 'Limpeza Facial']
   }),
-  created () {
-    if (this.user) {
-      this.form = this.user;
-    }
-  },
-  methods: {
-    async validate () {
-        const { valid } = await this.$refs.form.validate()
+  created() {
+    this.getCargos();
+    this.getServicos();
+		if (!this.create) {
+      axios.get('http://localhost:8080/profissional/find-by-id?idProfissional=' + this.id).then(response => {
+				this.form = response.data;
+			});
+		}
+	},
+	methods: {
+    getCargos() {
+      axios.get('http://localhost:8080/cargo/find-all').then(response => {
+        this.cargos = response.data;
+      });
+    },
+    getServicos() {
+      axios.get('http://localhost:8080/servicos/find-all').then(response => {
+        this.servicos = response.data;
+      });
+    },
+		async validate() {
+			const { valid } = await this.$refs.form.validate()
 
-        if (valid) {
-          alert("Formulário válido")
-        }
-      },
-  },
+			if (valid) {
+				if (this.create) {
+					this.saveProfissional();
+				} else {
+          this.updateProfissional();
+				}
+			}
+		},
+    saveProfissional() {
+      axios.post('http://localhost:8080/profissional/save', this.form)
+      .then(function (response) {
+        window.location.href="/equipe";
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    updateProfissional() {
+      var form = {
+        idProfissional: this.id,
+        nome: this.form.nome,
+        cargo: this.form.cargo,
+        servicos: this.form.servicos,
+      }
+      axios.put('http://localhost:8080/profissional/update', form)
+      .then(function (response) {
+        window.location.href="/equipe";
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+	},
 }
 </script>
 

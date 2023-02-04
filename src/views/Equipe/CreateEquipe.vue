@@ -18,7 +18,7 @@
       </div>
       <div class="pa-12">
         <h1>Adicionar membro</h1>
-        <FormEquipe/>
+        <FormEquipe :create="true"/>
       </div>
     </div>
   </div>

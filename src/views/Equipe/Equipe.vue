@@ -39,10 +39,10 @@
               </th>
             </tr>
           </thead>
-          <tbody v-for="item, index in users">
+          <tbody v-for="item in equipe">
             <tr class="border_bottom">
               <td>{{ item.nome }}</td>
-              <td>{{ item.cargo }}</td>
+              <td>{{ item.cargo.cargo }}</td>
               <td>
                 <div class="d-flex flex-row">
                   <div class="pr-2" v-for="servico in item.servicos">{{ servico }};</div>
@@ -51,12 +51,12 @@
               <td>
                 <div class="d-flex justify-end">
                   <v-btn flat stacked prepend-icon="mdi-eye-outline" title="notification" value="notification"></v-btn>
-                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'user-edit', params: {id: index}}">
+                  <v-btn flat stacked title="notification" value="notification" :to="{name: 'equipe-edit', params: {id: item.idProfissional}}">
                     <v-icon color="#EFA00B">
                       mdi-text-box-edit-outline
                     </v-icon>
                   </v-btn>
-                  <v-btn flat stacked title="notification" value="notification">
+                  <v-btn flat stacked title="notification" value="notification" @click="deleteProfissional(item.idProfissional)">
                     <v-icon color="#CE2D4F">
                       mdi-trash-can-outline
                     </v-icon>
@@ -72,18 +72,33 @@
 </template>
 <script>
 import Sidebar from '@/components/Sidebar';
+import axios from 'axios';
 export default {
   components: {
     Sidebar
   },
   data() {
     return {
-      users: {
-        '1' : { "nome": "Vinicio Bernardes", "cargo": "Cabelereiro", "servicos": ["Cabelo", "Barba"] },
-        '2' : { "nome": "Felipe Cintra", "cargo": "Cabelereiro", "servicos": ["Cabelo", "Barba", "Sombrancelha"] },
-      },
+      equipe: [],
     }
-  }
+  },
+  created() {
+    this.getEquipe();
+  },
+  methods: {
+    getEquipe() {
+      axios.get('http://localhost:8080/profissional/find-all').then(response => {
+        this.equipe = response.data;
+      });
+    },
+    deleteProfissional(id) {
+      var _this = this;
+      axios.delete('http://localhost:8080/profissional/delete?idProfissional=' + id).then(function (response) {
+        alert(response.data);
+        _this.getEquipe();
+      });
+    }
+  },
 }
 </script>
 <style scoped>
