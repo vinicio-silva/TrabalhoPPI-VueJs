@@ -94,13 +94,6 @@ export default {
 		async validate() {
 			const { valid } = await this.$refs.form.validate()
 
-<<<<<<< HEAD
-        if (valid) {
-          alert("Formulário válido")
-        }
-      },
-  },
-=======
 			if (valid) {
 				if (this.create) {
 					this.saveCliente();
@@ -137,7 +130,6 @@ export default {
       });
     },
 	},
->>>>>>> origin/master
 }
 </script>
 
