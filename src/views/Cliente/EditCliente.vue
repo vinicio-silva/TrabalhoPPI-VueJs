@@ -5,7 +5,7 @@
       <div class="d-flex justify-end px-6 pt-4" style="height: 90px;">
         <v-toolbar color="white" class="pa-2">
           <v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
-          <v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" to="/cliente/edit"></v-btn>
+          <v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" ></v-btn>
         </v-toolbar>
       </div>
       <div class="pa-12">
@@ -19,6 +19,7 @@
 import Sidebar from '@/components/Sidebar';
 import FormCliente from '@/components/FormCliente.vue';
 export default {
+  props: ['id'],
   components: {
     Sidebar,
     FormCliente

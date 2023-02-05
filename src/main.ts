@@ -44,7 +44,7 @@ const routes = [
   { path: '/equipe/:id/edit', component: EditUser, name: 'equipe-edit', props: true },
   { path: '/cliente', component: Cliente },
   { path: '/cliente/create', component: CreateCliente },
-  { path: '/cliente/edit', component: EditCliente, name: 'user-edit', props: true},
+  { path: '/cliente/:id/edit', component: EditCliente, name: 'user-edit', props: true},
   { path: '/agenda', component: Agenda },
   { path: '/agenda/create', component: CreateAgenda },
   { path: '/agenda/:id/edit', component: EditAgenda, name: 'agenda-edit', props: true },

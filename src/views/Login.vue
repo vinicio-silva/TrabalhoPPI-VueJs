@@ -12,16 +12,14 @@
 			<v-col class="login-bg-right" cols="6">
 				<img class="logo" src="src/assets/logo.png">
 				<p class="titulo">Olá, bem vindo!</p>
-				<v-form>
-					<v-label class="lab">Email</v-label>
-					<v-text-field class="box" prepend-icon="person" name="login" type="text"></v-text-field>
-					<v-label class="lab">Senha</v-label>
-					<v-text-field class="box" id="password" prepend-icon="lock" name="password" type="password"></v-text-field>
-					<input class="cb" type="checkbox" id="keepConnected">
-					<label style="margin-left: 1%;" for="keepConnected"> Manter Conectado</label>
-					<a class="esqueciSenha" href="https://ufu.br/">Esqueci a senha!</a><br>
-					<button class="Entrar">Entrar</button>
-				</v-form>
+        <v-label class="lab">Email</v-label>
+        <v-text-field class="box" prepend-icon="person" name="login" type="text"></v-text-field>
+        <v-label class="lab">Senha</v-label>
+        <v-text-field class="box" id="password" prepend-icon="lock" name="password" type="password"></v-text-field>
+        <input class="cb" type="checkbox" id="keepConnected">
+        <label style="margin-left: 1%;" for="keepConnected"> Manter Conectado</label>
+        <a class="esqueciSenha" href="https://ufu.br/">Esqueci a senha!</a><br>
+        <button type="button" class="Entrar" @click="goTo()">Entrar</button>
 				<h2 class=""><span>ou</span></h2>
 
 				<a class="google" href="http://google.com"><img src="src/assets/login/icon _google_.svg"></a>
@@ -37,7 +35,15 @@
 </template>
 <script>
 export default {
-
+  data() {
+    return {
+    }
+  },
+  methods: {
+    goTo() {
+      window.location.href="/dashboard"
+    }
+  },
 }
 </script>
 

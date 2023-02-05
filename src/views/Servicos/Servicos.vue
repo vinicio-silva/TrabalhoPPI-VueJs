@@ -5,11 +5,11 @@
 			<div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
           <h2>Serviços</h2>
-          <div class="subtitle">Gerencie todos os serviços oferecidos por você.</div>
+          <div class="subtitle">Gerencie todos os serviços oferecidos por você</div>
         </div>
 				<v-toolbar color="white" class="pa-2">
 					<v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
-					<v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" to="/cliente/edit"></v-btn>
+					<v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" ></v-btn>
 				</v-toolbar>
 			</div>
 			<div class="pa-6">

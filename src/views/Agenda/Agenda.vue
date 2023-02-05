@@ -5,11 +5,11 @@
 			<div class="d-flex justify-space-between px-6 pt-4" style="height: 90px;">
         <div>
           <h2 class="title">Agendamentos</h2>
-          <div class="subtitle">Veja os agendamentos da sua equipe.</div>
+          <div class="subtitle">Veja os agendamentos da sua equipe</div>
         </div>
 				<v-toolbar color="white" class="pa-2">
 					<v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
-					<v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" to="/cliente/edit"></v-btn>
+					<v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" ></v-btn>
 				</v-toolbar>
 			</div>
 			<div class="pa-6">
@@ -30,7 +30,7 @@
 								Cliente
 							</th>
 							<th class="text-left f-20">
-								Serviço
+								Serviços
 							</th>
               <th class="text-left f-20">
 								Valor
@@ -47,14 +47,14 @@
 					</thead>
 					<tbody v-for="item in agenda">
 						<tr class="border_bottom">
-							<td>{{ item.cliente.nome }}</td>
+							<td>{{ item.client.nome }}</td>
               <td>
                 <div class="d-flex flex-row" >
-                    <div class="pr-2" v-for="servico in item.servicos">{{ servico }};</div>
+                    <div class="pr-2" v-for="servico in item.servicos">{{ servico.descricao }};</div>
                 </div>
               </td>
               <td>{{ item.valor }}</td>
-              <td>{{ item.data }}</td>
+              <td>{{ formatDate(item.data) }}</td>
               <td>{{ item.profissional.nome }}</td>
               <td>
                 <div class="d-flex justify-end">
@@ -81,6 +81,7 @@
 <script>
 import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
+import moment from 'moment';
 export default {
 	components: {
 		Sidebar
@@ -96,7 +97,7 @@ export default {
   methods: {
     getAgendamento() {
       axios.get('http://localhost:8080/agendamentos/findAll').then(response => {
-        this.equipe = response.data;
+        this.agenda = response.data;
       });
     },
     deleteAgendamento(id) {
@@ -105,6 +106,9 @@ export default {
         alert(response.data);
         _this.getAgendamento();
       });
+    },
+    formatDate(data) {
+      return moment(data).format('DD/MM/YYYY HH:mm');
     }
   },
 }

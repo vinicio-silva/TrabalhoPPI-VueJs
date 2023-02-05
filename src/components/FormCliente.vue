@@ -28,7 +28,7 @@
         </v-col>
         <v-col cols="12" md="2">
           <label for="dtNascimento">Data de Nascimento</label>
-          <Datepicker class="pt-3" locale="pt" auto-apply :enable-time-picker="false" v-model="form.dtNascimento" :flow="flow"></Datepicker>
+          <Datepicker class="pt-3" locale="pt" format="dd/MM/yyyy" auto-apply :enable-time-picker="false" v-model="form.dtNascimento" :flow="flow"></Datepicker>
         </v-col>
       </v-row>
       <div class="d-flex justify-end">
@@ -44,6 +44,7 @@
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import axios from 'axios';
+import moment from 'moment'
 export default {
   props: ['create', 'id'],
   data: () => ({
@@ -103,9 +104,10 @@ export default {
 			}
 		},
     saveCliente() {
+      this.form.dtNascimento = moment(this.form.dtNascimento).format('YYYY-MM-DD');
       axios.post('http://localhost:8080/client/save', this.form)
       .then(function (response) {
-        window.location.href="/dashboard";
+        window.location.href="/cliente";
       })
       .catch(function (error) {
         console.log(error);
@@ -117,13 +119,13 @@ export default {
         nome: this.form.nome,
         email: this.form.email,
         senha: this.form.senha,
-        dtNascimento: this.form.dtNascimento,
+        dtNascimento: moment(this.form.dtNascimento).format('YYYY-MM-DD'),
         cpf: this.form.cpf,
         telefone: this.form.telefone,
       }
       axios.put('http://localhost:8080/client/update', form)
       .then(function (response) {
-        window.location.href="/dashboard";
+        window.location.href="/cliente";
       })
       .catch(function (error) {
         console.log(error);

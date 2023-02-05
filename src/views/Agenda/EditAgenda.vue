@@ -13,7 +13,7 @@
         </div>
         <v-toolbar color="white" class="pa-2">
           <v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
-          <v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" to="/cliente/edit"></v-btn>
+          <v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" ></v-btn>
         </v-toolbar>
       </div>
       <div class="pa-12">
@@ -27,6 +27,7 @@
 import Sidebar from '@/components/Sidebar';
 import FormAgenda from '@/components/FormAgenda';
 export default {
+  props: ['id'],
   components: {
     Sidebar,
     FormAgenda

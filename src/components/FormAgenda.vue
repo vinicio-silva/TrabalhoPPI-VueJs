@@ -4,7 +4,7 @@
       <v-row>
         <v-col cols="12" md="6">
           <label for="cliente">Cliente</label>
-          <v-select v-model="form.cliente" :items="clientes" :rules="clienteRules" item-title="nome" return-object label="Cliente" class="mt-1" required></v-select>
+          <v-select v-model="form.client" :items="clientes" :rules="clienteRules" item-title="nome" return-object label="Cliente" class="mt-1" required></v-select>
         </v-col>
 
         <v-col cols="12" md="6">
@@ -19,11 +19,11 @@
         </v-col>
         <v-col cols="12" md="5">
           <label for="valor">Valor</label>
-          <v-text-field v-model="form.valor" :rules="valorRules" placeholder="Valor" class="mt-1" required></v-text-field>
+          <v-text-field disabled v-model="form.valor" :rules="valorRules" placeholder="Valor" class="mt-1" required></v-text-field>
         </v-col>
         <v-col cols="12" md="2">
           <label for="data">Data</label>
-          <Datepicker class="pt-3" locale="pt" auto-apply v-model="form.data"></Datepicker>
+          <Datepicker class="pt-3" locale="pt" format="dd/MM/yyyy HH:mm" auto-apply v-model="form.data"></Datepicker>
         </v-col>
       </v-row>
       <div class="d-flex justify-end">
@@ -39,6 +39,7 @@
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import axios from 'axios';
+import moment from 'moment'
 export default {
   props: ['create', 'id'],
   data: () => ({
@@ -47,8 +48,8 @@ export default {
     },
     valid: false,
     form: {
-      cliente: '',
-      valor: '',
+      client: '',
+      valor: 0,
       data: '',
       profissional: '',
       servicos: []
@@ -58,8 +59,6 @@ export default {
     ],
     valorRules: [
       v => !!v || 'O campo de valor é obrigatório',
-      v => v.indexOf(',') == -1 || 'Os centavos devem ser separados por ponto',
-      v => isNaN(v) == false || 'O valor deve ser um número'
     ],
     profissionalRules: [
       v => !!v || 'O campo de profissional é obrigatório',
@@ -69,19 +68,41 @@ export default {
     ],
     clientes: [],
     equipe: [],
-    servicos: []
+    servicos: [],
+    flow: ['year', 'month', 'calendar'],
   }),
   created() {
     this.getClientes();
     this.getEquipe();
-    this.getServicos();
 		if (!this.create) {
-      axios.get('http://localhost:8080/agendamentos/find-by-id?idAgendamentos=' + this.id).then(response => {
+      axios.get('http://localhost:8080/agendamentos/find-by-id?idAgendamento=' + this.id).then(response => {
 				this.form = response.data;
 			});
 		}
 	},
+  watch: {
+    'form.servicos': {
+      handler: function (newVal, oldVal) {
+        var soma = 0;
+        this.form.servicos.forEach(servico => {
+          soma = soma + servico.valor
+        });
+        this.form.valor = soma;
+      }
+    },
+    'form.profissional': {
+      handler: function (newVal, oldVal) {
+        this.getServicoByProfissionalId(newVal.idProfissional);
+        this.form.servicos = [];
+      }
+    },
+  },
 	methods: {
+    getServicoByProfissionalId(idProfissional) {
+      axios.get('http://localhost:8080/profissional/find-by-id?idProfissional=' + idProfissional).then(response => {
+				this.servicos = response.data.servicos;
+			});
+    },
     getClientes() {
       axios.get('http://localhost:8080/client/find-all').then(response => {
         this.clientes = response.data;
@@ -90,11 +111,6 @@ export default {
     getEquipe() {
       axios.get('http://localhost:8080/profissional/find-all').then(response => {
         this.equipe = response.data;
-      });
-    },
-    getServicos() {
-      axios.get('http://localhost:8080/servicos/find-all').then(response => {
-        this.servicos = response.data;
       });
     },
 		async validate() {
@@ -110,13 +126,13 @@ export default {
 		},
     saveAgendamento() {
       var form = {
-        idUser: this.form.cliente.idUser,
+        client: this.form.client,
         valor: this.form.valor,
-        data: this.form.data,
-        idProfissional: this.form.profissional.idProfissional,
+        data: moment(this.form.data).format('YYYY-MM-DD HH:mm:ss'),
+        profissional: this.form.profissional,
         servicos: this.form.servicos
       }
-      axios.post('http://localhost:8080/profissional/save', form)
+      axios.post('http://localhost:8080/agendamentos/save', form)
       .then(function (response) {
         window.location.href="/agenda";
       })
@@ -127,13 +143,13 @@ export default {
     updateAgendamento() {
       var form = {
         idAgendamento: this.id,
-        idUser: this.form.cliente.idUser,
+        client: this.form.client,
         valor: this.form.valor,
-        data: this.form.data,
-        idProfissional: this.form.profissional.idProfissional,
+        data: moment(this.form.data).format('YYYY-MM-DD HH:mm:ss'),
+        profissional: this.form.profissional,
         servicos: this.form.servicos
       }
-      axios.put('http://localhost:8080/profissional/update', form)
+      axios.put('http://localhost:8080/agendamentos/update', form)
       .then(function (response) {
         window.location.href="/agenda";
       })

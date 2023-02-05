@@ -9,13 +9,18 @@
         </div>
         <v-toolbar color="white" class="pa-2">
           <v-btn stacked prepend-icon="mdi-bell" title="notification" value="notification"></v-btn>
-          <v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" to="/cliente/edit"></v-btn>
+          <v-btn stacked prepend-icon="mdi-account-circle" title="profile" value="profile" ></v-btn>
         </v-toolbar>
       </div>
       <div class="pa-6">
-        <div class="d-flex justify-start pr-8">
+        <div class="d-flex justify-space-between pr-8">
           <div class="d-flex" style="min-width: 300px;">
             <v-text-field class="mx-2" placeholder="Buscar cliente" prepend-inner-icon="mdi-magnify" filled dense></v-text-field>
+          </div>
+          <div>
+            <v-btn prepend-icon="mdi-plus" color="#1C10DA" class="text-white ml-4" height="40px" to="/cliente/create">
+              Adicionar cliente
+            </v-btn>
           </div>
         </div>
         <v-table>
@@ -41,7 +46,7 @@
             <tr class="border_bottom">
               <td>{{ item.nome }}</td>
               <td>{{ item.email }}</td>
-              <td>{{ item.dtNascimento }}</td>
+              <td>{{ formatDate(item.dtNascimento) }}</td>
               <td>{{ item.telefone }}</td>
               <td>
                 <div class="d-flex justify-end">
@@ -68,6 +73,7 @@
 <script>
 import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
+import moment from 'moment';
 export default {
   components: {
     Sidebar
@@ -92,6 +98,9 @@ export default {
         alert(response.data);
         _this.getClientes();
       });
+    },
+    formatDate(data) {
+      return moment(data).format('DD/MM/YYYY');
     }
   },
 }
