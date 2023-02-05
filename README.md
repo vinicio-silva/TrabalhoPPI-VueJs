@@ -6,6 +6,7 @@ Projeto de um sistema de agendamento de servi√ßos como barbearia, massagem, est√
 
 [Figma](https://www.figma.com/file/638BU4ScdbzNhDjlHOP00u/PPI---Projeto-Agendamento?node-id=0%3A1&t=ctbSuLlVzRljt6Hk-1) do projeto.
 
+
 **Stack utilizada**
 - JS Framework: [VueJS](https://vuejs.org)
 - UI Framework: [Vuetify](https://next.vuetifyjs.com/en/)
